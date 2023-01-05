@@ -75,8 +75,8 @@ public class JWTtoken {
 				
 				if (user != null) {
 					return new UsernamePasswordAuthenticationToken(
-							user.getuser_email(), 
-							user.getuser_password(),
+							user.getUser_email(), 
+							user.getUser_password(),
 							user.getAuthorities());
 				}
 			}

@@ -53,35 +53,35 @@ public class UserModel implements Serializable {
 		return user_roles;
 	}
 
-    public Long getuser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setuser_id(Long user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 
-    public String getuser_email() {
+    public String getUser_email() {
         return user_email;
     }
 
-    public void setuser_email(String user_email) {
+    public void setUser_email(String user_email) {
         this.user_email = user_email;
     }
 
-    public String getuser_password() {
+    public String getUser_password() {
         return user_password;
     }
 
-    public void setuser_password(String user_password) {
+    public void setUser_password(String user_password) {
         this.user_password = user_password;
     }
 
-    public String getuser_token() {
+    public String getUser_token() {
         return user_token;
     }
 
-    public void setuser_token(String user_token) {
+    public void setUser_token(String user_token) {
         this.user_token = user_token;
     }
 
