@@ -24,7 +24,7 @@ public class PhoneModel implements Serializable {
 
 	private String phone_number;
 
-    //Relacionamento UsernameModel > FK = contact_id
+    //Relacionamento userModel > FK = contact_id
     @JsonIgnore //Evita repetição na cunsulta da lista (33.24)
     @org.hibernate.annotations.ForeignKey(name = "contact_id")
     @ManyToOne(optional = false, fetch = FetchType.EAGER) //Não cadastra telefone sem pai

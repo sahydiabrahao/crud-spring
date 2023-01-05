@@ -16,12 +16,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class SendEmailService {
 	
-	private String userName = "teste15502891@gmail.com";
-	private String senha= "hxwgkhwgbmaacbjx";   //Senha para APP
+	private String my_email = "teste15502891@gmail.com";
+	private String my_password= "hxwgkhwgbmaacbjx";   //my_password para APP
 
-	private String nomeRemetente = "Sahydi Abrahão";
+	private String my_name = "Sahydi Abrahão";
 
-	public void sendEmail(String destinoEmail, String assuntoEmail, String textoEmail)throws Exception{
+	public void sendEmail(String email_addressee, String email_subject, String email_text)throws Exception{
 
        Properties properties = new Properties();
 		
@@ -37,18 +37,18 @@ public class SendEmailService {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(userName, senha);
+				return new PasswordAuthentication(my_email, my_password);
 			}
 		});
 		
-		Address[] toUser = InternetAddress.parse(destinoEmail);
+		Address[] toUser = InternetAddress.parse(email_addressee);
 		
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(userName, nomeRemetente)); /*Quem está enviano*/
+		message.setFrom(new InternetAddress(my_email, my_name)); /*Quem está enviano*/
 		message.setRecipients(Message.RecipientType.TO, toUser);/*Email de destino*/
-		message.setSubject(assuntoEmail);/*Assunto do e-mail*/
+		message.setSubject(email_subject);/*Assunto do e-mail*/
 		
-		message.setText(textoEmail);
+		message.setText(email_text);
 		
 		Transport.send(message);
 	}

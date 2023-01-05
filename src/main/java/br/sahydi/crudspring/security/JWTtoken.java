@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import br.sahydi.crudspring.other.ContextLoad;
-import br.sahydi.crudspring.model.UsernameModel;
-import br.sahydi.crudspring.repository.UsernameRepository;
+import br.sahydi.crudspring.model.UserModel;
+import br.sahydi.crudspring.repository.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -33,11 +33,11 @@ public class JWTtoken {
 	private static final String HEADER_STRING = "Authorization";
 	
 	// Gerando token de autenticação e adicionando ao cabeçalho e resposta Http
-	public void addAuthentication(HttpServletResponse response, String username) throws IOException {
+	public void addAuthentication(HttpServletResponse response, String user) throws IOException {
 		
 		// Montagem do Token
 		String JWT = Jwts.builder() // gerador de token
-				.setSubject(username) // adiciona usuário
+				.setSubject(user) // adiciona usuário
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // tempo expiração
 				.signWith(SignatureAlgorithm.HS512, SECRET) // algoritmo de geração de senha
 				.compact(); // compactação String
@@ -61,23 +61,23 @@ public class JWTtoken {
 		
 		if (token != null) {			
 			// Faz validação do Token do usuário na requisição
-			String username_email = Jwts.parser()
+			String user_email = Jwts.parser()
 					.setSigningKey(SECRET)
 					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
 					.getBody()
 					.getSubject();	
 			
-			if (username_email != null) {					
-				UsernameModel username = (UsernameModel) ContextLoad
+			if (user_email != null) {					
+				UserModel user = (UserModel) ContextLoad
 						.getApplicationContext()
-						.getBean(UsernameRepository.class)
-						.usernameFindByEmail(username_email);
+						.getBean(UserRepository.class)
+						.userFindByEmail(user_email);
 				
-				if (username != null) {
+				if (user != null) {
 					return new UsernamePasswordAuthenticationToken(
-							username.getUsername_email(), 
-							username.getUsername_password(),
-							username.getAuthorities());
+							user.getuser_email(), 
+							user.getuser_password(),
+							user.getAuthorities());
 				}
 			}
 		}	

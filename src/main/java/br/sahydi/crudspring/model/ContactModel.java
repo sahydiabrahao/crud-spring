@@ -48,8 +48,8 @@ public class ContactModel implements Serializable {
     @Column(unique = true)
 	private String email;
 
-    //Referencia UsernameModel
-	private Long contact_username_id;
+    //Referencia userModel
+	private Long contact_user_id;
 
     //Relacionamento PhoneModel  > phone_contact_id = FK 
     @OneToMany(mappedBy="phone_contact_id", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -103,12 +103,12 @@ public class ContactModel implements Serializable {
         this.email = email;
     }
 
-    public Long getContact_username_id() {
-        return contact_username_id;
+    public Long getContact_user_id() {
+        return contact_user_id;
     }
 
-    public void setContact_username_id(Long contact_username_id) {
-        this.contact_username_id = contact_username_id;
+    public void setContact_user_id(Long contact_user_id) {
+        this.contact_user_id = contact_user_id;
     }
 
     public List<PhoneModel> getContact_phones() {

@@ -16,7 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.sahydi.crudspring.model.UsernameModel;
+import br.sahydi.crudspring.model.UserModel;
 
 // Estabelece gerenciador de token
 public class JWTlogin extends AbstractAuthenticationProcessingFilter {
@@ -37,12 +37,12 @@ public class JWTlogin extends AbstractAuthenticationProcessingFilter {
 			throws AuthenticationException, IOException, ServletException {
 
 		// Está pegando o token para validar
-		UsernameModel username = new ObjectMapper().readValue(request.getInputStream(), UsernameModel.class);
+		UserModel user = new ObjectMapper().readValue(request.getInputStream(), UserModel.class);
 		
 		// Retorna o usuário email, senha e acesso		
 		return getAuthenticationManager()
 				.authenticate(new UsernamePasswordAuthenticationToken(
-					username.getUsername_email(), username.getUsername_password()));
+					user.getuser_email(), user.getuser_password()));
 	}
 	
 	@Override
