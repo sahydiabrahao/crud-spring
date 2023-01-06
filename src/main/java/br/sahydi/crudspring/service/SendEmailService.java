@@ -19,7 +19,7 @@ public class SendEmailService {
 	private String my_email = "teste15502891@gmail.com";
 	private String my_password= "hxwgkhwgbmaacbjx";   //my_password para APP
 
-	private String my_name = "Sahydi Abrahão";
+	private String my_name = "Projeto Crud Agenda de Contatos";
 
 	public void sendEmail(String email_addressee, String email_subject, String email_text)throws Exception{
 

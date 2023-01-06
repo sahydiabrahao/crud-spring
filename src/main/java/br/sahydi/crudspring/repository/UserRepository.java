@@ -31,7 +31,7 @@ public interface UserRepository extends JpaRepository<UserModel, Long>{
     //Recuperação de senha 
     @Transactional
     @Modifying
-    @Query(value = " UPDATE user SET user_password = ?1 WHERE user_id = ?2", nativeQuery = true)
+    @Query(value = " UPDATE users SET password = ?1 WHERE id = ?2", nativeQuery = true)
     void updatePassword(String user_password, Long user_id);
 
     //Consulta nome das constraints na tabela Usuarios_Role 
