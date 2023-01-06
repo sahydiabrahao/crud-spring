@@ -44,13 +44,13 @@ import java.util.Calendar;
 	public ResponseEntity<UserModel> userRegister(@RequestBody UserModel user) throws IOException {
 
 		//Salvar senha criptografada
-		String user_password_encrypted = new BCryptPasswordEncoder().encode(user.getUser_password());
-		user.setUser_password(user_password_encrypted );
+		String user_password_encrypted = new BCryptPasswordEncoder().encode(user.getPassword());
+		user.setPassword(user_password_encrypted );
 
 		UserModel userSave = userRepository.save(user);
 
 		//Inserir Role Ex: 1 ROLE_ADMIN 2 ROLE_USER
-		userDatailsService.defaultROLE(userSave.getUser_id());
+		userDatailsService.defaultROLE(userSave.getId());
 
 		return new ResponseEntity<UserModel>(userSave, HttpStatus.OK);
 	}
@@ -61,7 +61,7 @@ import java.util.Calendar;
 
 		ObjectErrorModel objectErrorModel = new ObjectErrorModel();
 
-		UserModel user_email = userRepository.userFindByEmail(user.getUser_email());
+		UserModel user_email = userRepository.userFindByEmail(user.getEmail());
 
 		//Não tem cadastro
 		if(user_email == null){	
@@ -77,10 +77,10 @@ import java.util.Calendar;
 			String user_new_password_encrypted = new BCryptPasswordEncoder().encode(user_new_password);
 
 			//Salva no BD
-			userRepository.updatePassword(user_new_password_encrypted , user.getUser_id());
+			userRepository.updatePassword(user_new_password_encrypted , user.getId());
 
 			//Envia senha por email
-			sendEmailService.sendEmail(user.getUser_email(), "Recuperação de Senha", "Nova Senha: " + user_new_password );
+			sendEmailService.sendEmail(user.getEmail(), "Recuperação de Senha", "Nova Senha: " + user_new_password );
 
 			objectErrorModel.setCode("200");
 			objectErrorModel.setError("Nova senha enviada por email");

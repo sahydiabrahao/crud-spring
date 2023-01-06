@@ -18,31 +18,32 @@ public class RoleModel implements GrantedAuthority {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_role")
-	private Long role_id;
+	private Long id;
 
     //Papel Ex: ROLE_GERENTE  
-    private String role_name;            
+    private String name;            
     
     //Método nome do papel Ex:ROLE_GERENTE 
     @Override
     public String getAuthority() {      
-        return this.role_name;
+        return this.name;
     }
 
-    public Long getRole_id() {
-        return role_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setRole_id(Long role_id) {
-        this.role_id = role_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getRole_name() {
-        return role_name;
+    public String getName() {
+        return name;
     }
 
-    public void setRole_name(String role_name) {
-        this.role_name = role_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
+  
 }

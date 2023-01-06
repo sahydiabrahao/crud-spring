@@ -42,7 +42,7 @@ public class JWTlogin extends AbstractAuthenticationProcessingFilter {
 		// Retorna o usuário email, senha e acesso		
 		return getAuthenticationManager()
 				.authenticate(new UsernamePasswordAuthenticationToken(
-					user.getUser_email(), user.getUser_password()));
+					user.getEmail(), user.getPassword()));
 	}
 	
 	@Override

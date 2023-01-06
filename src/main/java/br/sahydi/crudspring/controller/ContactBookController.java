@@ -84,8 +84,8 @@ public class ContactBookController {
 	public ResponseEntity<ContactModel> cadastrar(@RequestBody ContactModel contact) throws IOException {
 
 		//Associar Contato com Telefone
-		for (int pos = 0; pos < contact.getContact_phones().size(); pos ++) {
-			contact.getContact_phones().get(pos).setPhone(contact);
+		for (int pos = 0; pos < contact.getPhones().size(); pos ++) {
+			contact.getPhones().get(pos).setContact(contact);
 		}
 
 		ContactModel contactSave = contatoRepository.save(contact);

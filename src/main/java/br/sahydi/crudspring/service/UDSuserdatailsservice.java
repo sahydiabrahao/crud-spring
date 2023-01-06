@@ -32,8 +32,8 @@ public class UDSuserdatailsservice implements UserDetailsService {
 		}
 		
 		return new User(
-            user.getUser_email(),
-            user.getUser_password(),
+            user.getEmail(),
+            user.getPassword(),
             user.getAuthorities() //Roles
         );
 	}

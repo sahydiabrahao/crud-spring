@@ -20,36 +20,39 @@ public class PhoneModel implements Serializable {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long phone_id;
+	private Long id;
 
-	private String phone_number;
+	private String number;
 
     //Relacionamento UserModel > FK = contact_id
     @JsonIgnore //Evita repetição na cunsulta da lista (33.24)
     @org.hibernate.annotations.ForeignKey(name = "contact_id")
     @ManyToOne(optional = false, fetch = FetchType.EAGER) //Não cadastra telefone sem pai
-    private ContactModel phone;
+    private ContactModel contact;
 
-    public Long getPhone_id() {
-        return phone_id;
-    }
-
-    public void setPhone_id(Long phone_id) {
-        this.phone_id = phone_id;
+    public Long getId() {
+        return id;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public String getNumber() {
+        return number;
     }
 
-    public ContactModel getPhone() {
-        return phone;
+    public void setNumber(String number) {
+        this.number = number;
     }
-    public void setPhone(ContactModel phone) {
-        this.phone = phone;
+
+    public ContactModel getContact() {
+        return contact;
     }
+
+    public void setContact(ContactModel contact) {
+        this.contact = contact;
+    }
+
+
 }

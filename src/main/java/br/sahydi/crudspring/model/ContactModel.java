@@ -31,68 +31,68 @@ public class ContactModel implements Serializable {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long contact_id;
+	private Long id;
 
-    private String contact_name;
+    private String name;
 
     @CPF(message= "CPF Inválido")
-    private String contact_cpf;
+    private String cpf;
 
     @JsonFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso=ISO.DATE, pattern="yyyy-MM-dd")
-    private Date contact_date;
+    private Date date;
 
-    private String contact_zip_code;
+    private String zip_code;
 
     @Column(unique = true)
 	private String email;
 
     //Referencia userModel
-	private Long contact_user_id;
+	private Long user_id;
 
     //Relacionamento PhoneModel  > phone_contact_id = FK 
-    @OneToMany(mappedBy="phone", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<PhoneModel> contact_phones = new ArrayList<PhoneModel>();
+    @OneToMany(mappedBy="contact", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<PhoneModel> phones = new ArrayList<PhoneModel>();
 
-    public Long getContact_id() {
-        return contact_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setContact_id(Long contact_id) {
-        this.contact_id = contact_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getContact_name() {
-        return contact_name;
+    public String getName() {
+        return name;
     }
 
-    public void setContact_name(String contact_name) {
-        this.contact_name = contact_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getContact_cpf() {
-        return contact_cpf;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setContact_cpf(String contact_cpf) {
-        this.contact_cpf = contact_cpf;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public Date getContact_date() {
-        return contact_date;
+    public Date getDate() {
+        return date;
     }
 
-    public void setContact_date(Date contact_date) {
-        this.contact_date = contact_date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getContact_zip_code() {
-        return contact_zip_code;
+    public String getZip_code() {
+        return zip_code;
     }
 
-    public void setContact_zip_code(String contact_zip_code) {
-        this.contact_zip_code = contact_zip_code;
+    public void setZip_code(String zip_code) {
+        this.zip_code = zip_code;
     }
 
     public String getEmail() {
@@ -103,27 +103,27 @@ public class ContactModel implements Serializable {
         this.email = email;
     }
 
-    public Long getContact_user_id() {
-        return contact_user_id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setContact_user_id(Long contact_user_id) {
-        this.contact_user_id = contact_user_id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public List<PhoneModel> getContact_phones() {
-        return contact_phones;
+    public List<PhoneModel> getPhones() {
+        return phones;
     }
 
-    public void setContact_phones(List<PhoneModel> contact_phones) {
-        this.contact_phones = contact_phones;
+    public void setPhones(List<PhoneModel> phones) {
+        this.phones = phones;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((contact_id == null) ? 0 : contact_id.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
 
@@ -136,14 +136,15 @@ public class ContactModel implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         ContactModel other = (ContactModel) obj;
-        if (contact_id == null) {
-            if (other.contact_id != null)
+        if (id == null) {
+            if (other.id != null)
                 return false;
-        } else if (!contact_id.equals(other.contact_id))
+        } else if (!id.equals(other.id))
             return false;
         return true;
     }
 
+   
 
 
     
