@@ -85,7 +85,7 @@ public class ContactBookController {
 
 		//Associar Contato com Telefone
 		for (int pos = 0; pos < contact.getContact_phones().size(); pos ++) {
-			contact.getContact_phones().get(pos).setPhone_contact_id(contact);;
+			contact.getContact_phones().get(pos).setPhone(contact);
 		}
 
 		ContactModel contactSave = contatoRepository.save(contact);

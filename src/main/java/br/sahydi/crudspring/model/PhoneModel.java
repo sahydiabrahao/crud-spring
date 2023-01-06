@@ -24,11 +24,11 @@ public class PhoneModel implements Serializable {
 
 	private String phone_number;
 
-    //Relacionamento userModel > FK = contact_id
+    //Relacionamento UserModel > FK = contact_id
     @JsonIgnore //Evita repetição na cunsulta da lista (33.24)
     @org.hibernate.annotations.ForeignKey(name = "contact_id")
     @ManyToOne(optional = false, fetch = FetchType.EAGER) //Não cadastra telefone sem pai
-    private ContactModel phone_contact_id;
+    private ContactModel phone;
 
     public Long getPhone_id() {
         return phone_id;
@@ -46,12 +46,10 @@ public class PhoneModel implements Serializable {
         this.phone_number = phone_number;
     }
 
-    public ContactModel getPhone_contact_id() {
-        return phone_contact_id;
+    public ContactModel getPhone() {
+        return phone;
     }
-
-    public void setPhone_contact_id(ContactModel phone_contact_id) {
-        this.phone_contact_id = phone_contact_id;
+    public void setPhone(ContactModel phone) {
+        this.phone = phone;
     }
-    
 }

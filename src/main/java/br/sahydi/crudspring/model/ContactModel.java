@@ -52,7 +52,7 @@ public class ContactModel implements Serializable {
 	private Long contact_user_id;
 
     //Relacionamento PhoneModel  > phone_contact_id = FK 
-    @OneToMany(mappedBy="phone_contact_id", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="phone", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<PhoneModel> contact_phones = new ArrayList<PhoneModel>();
 
     public Long getContact_id() {

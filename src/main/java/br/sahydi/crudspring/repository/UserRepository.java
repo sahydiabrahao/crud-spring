@@ -22,10 +22,6 @@ public interface UserRepository extends JpaRepository<UserModel, Long>{
     @Query(nativeQuery = true, value = "UPDATE UserModel SET user_token = ?1 WHERE user_email = ?2")
 	void updateTokenUser(String user_token, String user_email);
 
-    //Consulta nome das constraints na tabela Usuarios_Role 
-    @Query(value = "SELECT constraint_name FROM information_schema.constraint_column_usage WHERE table_name = 'usuarios_role' AND column_name = 'role_id' AND constraint_name <> 'unique_role_user'", nativeQuery = true)
-    String searchConstraintRoleName();
-
     //Define Role Ex: ROLE_ADMIN ROLE_USER 
     @Transactional
     @Modifying
@@ -38,4 +34,7 @@ public interface UserRepository extends JpaRepository<UserModel, Long>{
     @Query(value = " UPDATE user SET user_password = ?1 WHERE user_id = ?2", nativeQuery = true)
     void updatePassword(String user_password, Long user_id);
 
+    //Consulta nome das constraints na tabela Usuarios_Role 
+    @Query(value = "SELECT constraint_name FROM information_schema.constraint_column_usage WHERE table_name = 'usuarios_role' AND column_name = 'role_id' AND constraint_name <> 'unique_role_user'", nativeQuery = true)
+    String searchConstraintRoleName();
 }
