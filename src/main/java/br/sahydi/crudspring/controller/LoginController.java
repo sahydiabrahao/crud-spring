@@ -56,7 +56,7 @@ import java.util.Calendar;
 	}
    
 	//Recuperar Senha do Usuario
-	@PostMapping(value = "/recover")
+	@PostMapping(value = "/recover-password")
 	public ResponseEntity<ObjectErrorModel> userRecoverPassword (@RequestBody UserModel user) throws Exception{
 
 		ObjectErrorModel objectErrorModel = new ObjectErrorModel();
