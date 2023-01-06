@@ -43,7 +43,7 @@ public class UDSuserdatailsservice implements UserDetailsService {
 		String constraintRoleName = userRepository.searchConstraintRoleName();
 		//Deleta constraint
 		if(constraintRoleName != null) {
-			jdbcTemplate.execute(" ALTER table usernames_role DROP CONSTRAINT " + constraintRoleName);
+			jdbcTemplate.execute(" ALTER table user_role DROP CONSTRAINT " + constraintRoleName);
 		}
 		
 		//Define ROLE_USER para o ID

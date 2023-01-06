@@ -43,7 +43,7 @@ public class ContactBookController {
 	private ReportService reportService;
 
 	//Pesquisa Todos os Contatos do Usuário
-	@GetMapping(value = "/{contact_user_id}", produces = "application/json")
+	@GetMapping(value = "/find/{contact_user_id}", produces = "application/json")
 	@CacheEvict(value = "varArmazenamentoCache", allEntries = true) //Salva e Limpa o cache
 	@CachePut("varArmazenamentoCache")								//Atuliza o cache
 	public ResponseEntity<List<ContactModel>> contatoUserFindAll (@PathVariable (value = "contact_user_id") Long contact_user_id) throws InterruptedException{
@@ -54,7 +54,7 @@ public class ContactBookController {
 	}
 
     //Pesquisa Contato por Id
-    @GetMapping(value = "/contatoEdit/{contact_user_id}/{contact_id}", produces = "application/json")
+    @GetMapping(value = "/find-id/{contact_user_id}/{contact_id}", produces = "application/json")
     @CacheEvict(value = "varArmazenamentoCache", allEntries = true) //Salva e Limpa o cache
     @CachePut("varArmazenamentoCache")								//Atuliza o cache
     public ResponseEntity<ContactModel> contatoUserFindId 
@@ -67,7 +67,7 @@ public class ContactBookController {
     }
 
 	//Pesquisa Contato por Nome 
-	@GetMapping(value = "/{contact_user_id}/{contact_nome}", produces = "application/json")
+	@GetMapping(value = "/find-name/{contact_user_id}/{contact_nome}", produces = "application/json")
 	@CacheEvict(value = "varArmazenamentoCache", allEntries = true) //Salva e Limpa o cache
 	@CachePut("varArmazenamentoCache")								//Atuliza o cache
 	public ResponseEntity<List<ContactModel>> contatoUserFindName 
@@ -103,7 +103,7 @@ public class ContactBookController {
 
 
 	//Deletar Contato por Id
-	@DeleteMapping(value = "/contactDelete/{contact_id}", produces = "application/text")
+	@DeleteMapping(value = "/delete/{contact_id}", produces = "application/text")
 	public String delete (@PathVariable (value = "contact_id") Long contact_id){
 		
 		contatoRepository.deleteById(contact_id);
@@ -112,7 +112,7 @@ public class ContactBookController {
 	}
 
 	//Deletar Telefone do Contato por Id
-	@DeleteMapping(value = "/phoneDelete/{phone_id}", produces = "application/text")
+	@DeleteMapping(value = "/delete-phone/{phone_id}", produces = "application/text")
 	public String deletePhone (@PathVariable("phone_id") Long phone_id){
 		
 		telefoneRepository.deleteById(phone_id);
@@ -121,7 +121,7 @@ public class ContactBookController {
 	}
 
 	//Relatório de Todos os Contatos **ARRUMAR PARA PROCURAR POR USUÁRIO ESPECÍDFICO**
-	@GetMapping(value = "/contactReport", produces = "application/text")
+	@GetMapping(value = "/report", produces = "application/text")
 	public ResponseEntity<String> reportDownload(HttpServletRequest request) throws SQLException, JRException {
 		
 		//PDF em Base64

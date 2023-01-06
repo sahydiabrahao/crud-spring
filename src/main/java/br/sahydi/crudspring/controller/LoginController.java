@@ -39,8 +39,8 @@ import java.util.Calendar;
 		return new ResponseEntity<UserModel>(user, HttpStatus.OK);
 	}
 
-	//Salvar Usuário
-	@PostMapping(value = "/save", produces = "application/json")
+	//Registrar Usuário
+	@PostMapping(value = "/register", produces = "application/json")
 	public ResponseEntity<UserModel> userRegister(@RequestBody UserModel user) throws IOException {
 
 		//Salvar senha criptografada
