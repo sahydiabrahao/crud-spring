@@ -30,7 +30,7 @@ import br.sahydi.crudspring.repository.PhoneRepository;
 import br.sahydi.crudspring.service.ReportService;
 
 @RestController /* Arquitetura REST */
-@RequestMapping(value = "/contactBook")
+@RequestMapping(value = "/contact-book")
 public class ContactBookController {
 
     @Autowired 

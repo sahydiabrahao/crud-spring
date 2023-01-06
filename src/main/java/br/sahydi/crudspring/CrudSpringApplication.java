@@ -36,7 +36,7 @@ public class CrudSpringApplication {
 			.allowedMethods("*")
 			.allowedOrigins("*");
 			
-		registry.addMapping("/contactBook/**")
+		registry.addMapping("/contact-book/**")
 			.allowedMethods("*")
 			.allowedOrigins("*");
 	}
