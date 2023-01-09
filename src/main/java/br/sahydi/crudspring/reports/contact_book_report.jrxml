@@ -2,59 +2,59 @@
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_usuario" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8cc78da7-0c14-423e-8e25-10ffe53e211d">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_portfolio"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db_contact_book"/>
 	<queryString language="SQL">
-		<![CDATA[select * from contato_model , telefone_model ]]>
+		<![CDATA[select * from contact , phone]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="contato_model"/>
-	</field>
-	<field name="cep" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="cep"/>
-		<property name="com.jaspersoft.studio.field.label" value="cep"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="contato_model"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contact"/>
 	</field>
 	<field name="cpf" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="cpf"/>
 		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="contato_model"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contact"/>
 	</field>
-	<field name="data_nascimento" class="java.sql.Date">
-		<property name="com.jaspersoft.studio.field.name" value="data_nascimento"/>
-		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="contato_model"/>
+	<field name="date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="date"/>
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contact"/>
 	</field>
 	<field name="email" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="email"/>
 		<property name="com.jaspersoft.studio.field.label" value="email"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="contato_model"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contact"/>
 	</field>
-	<field name="nome" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nome"/>
-		<property name="com.jaspersoft.studio.field.label" value="nome"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="contato_model"/>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contact"/>
 	</field>
-	<field name="usuario_id" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.name" value="usuario_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="usuario_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="contato_model"/>
+	<field name="user_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contact"/>
+	</field>
+	<field name="zip_code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="zip_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="zip_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="contact"/>
 	</field>
 	<field name="COLUMN_8" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="telefone_model"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="phone"/>
 	</field>
-	<field name="numero" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="numero"/>
-		<property name="com.jaspersoft.studio.field.label" value="numero"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="telefone_model"/>
+	<field name="number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="number"/>
+		<property name="com.jaspersoft.studio.field.label" value="number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="phone"/>
 	</field>
-	<field name="contato_id" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.name" value="contato_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="contato_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="telefone_model"/>
+	<field name="contact_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="contact_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="contact_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="phone"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -140,7 +140,7 @@
 				<textElement textAlignment="Left">
 					<font fontName="Segoe UI"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="160" y="0" width="140" height="20" uuid="447dabbd-e9c9-48e1-b50d-c710bd3bd279"/>
@@ -151,14 +151,14 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="460" y="0" width="100" height="20" uuid="df417ae6-6d1d-4c2b-b184-a8c9d69647c6"/>
-				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="310" y="0" width="140" height="20" uuid="72e38de1-201a-4024-9637-2b0d7883e933"/>
 				<textElement>
 					<font fontName="Segoe UI"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
