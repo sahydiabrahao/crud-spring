@@ -125,7 +125,7 @@ public class ContactBookController {
 	public ResponseEntity<String> contactReport(HttpServletRequest request) throws SQLException, JRException {
 		
 		//PDF em Base64
-		byte[] pdf = reportService.reportGenerate("report_usuario", new HashMap(), request.getServletContext());
+		byte[] pdf = reportService.reportGenerate("contact_book_report", new HashMap(), request.getServletContext());
 
 		//String em Base64
 		String base64Pdf = "data:application/pdf;base64," + Base64.encodeBase64String(pdf);
