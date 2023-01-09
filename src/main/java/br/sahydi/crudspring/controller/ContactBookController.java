@@ -2,7 +2,7 @@ package br.sahydi.crudspring.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,7 +34,7 @@ import br.sahydi.crudspring.service.ReportService;
 public class ContactBookController {
 
     @Autowired 
-	private ContactRepository contatoRepository;
+	private ContactRepository contactRepository;
 
 	@Autowired 
 	private PhoneRepository telefoneRepository;
@@ -48,7 +48,7 @@ public class ContactBookController {
 	@CachePut("varArmazenamentoCache")								//Atuliza o cache
 	public ResponseEntity<List<ContactModel>> contactFindAll (@PathVariable (value = "user_id") Long user_id) throws InterruptedException{
 		
-		List<ContactModel> contacts = (List<ContactModel>) contatoRepository.contactFindAll(user_id);
+		List<ContactModel> contacts = (List<ContactModel>) contactRepository.contactFindAll(user_id);
 
 		return new ResponseEntity<List<ContactModel>>(contacts, HttpStatus.OK);
 	}
@@ -61,7 +61,7 @@ public class ContactBookController {
         (@PathVariable (value = "user_id") Long user_id, 
         @PathVariable (value = "contact_id") Long contact_id) throws InterruptedException{
         
-        ContactModel contact = contatoRepository.contactFindId(user_id, contact_id);
+        ContactModel contact = contactRepository.contactFindId(user_id, contact_id);
 
         return new ResponseEntity<ContactModel>(contact, HttpStatus.OK);
     }
@@ -74,7 +74,7 @@ public class ContactBookController {
         (@PathVariable (value = "user_id") Long user_id, 
         @PathVariable (value = "contact_nome") String contact_nome) throws InterruptedException{
 		
-		List<ContactModel> contacts = (List<ContactModel>) contatoRepository.contactFindName(user_id, contact_nome);
+		List<ContactModel> contacts = (List<ContactModel>) contactRepository.contactFindName(user_id, contact_nome);
 
 		return new ResponseEntity<List<ContactModel>>(contacts, HttpStatus.OK);
 	}
@@ -88,25 +88,39 @@ public class ContactBookController {
 			contact.getPhones().get(pos).setContact(contact);
 		}
 
-		ContactModel contactSave = contatoRepository.save(contact);
+		ContactModel contactSave = contactRepository.save(contact);
 
 		return new ResponseEntity<ContactModel>(contactSave, HttpStatus.OK);
 	}
 
 	//Atualizar Contato
-	@PutMapping(value = "/update", produces = "application/json")
+	@PutMapping(value = "/updateContact", produces = "application/json")
 	public ResponseEntity<ContactModel> contactUpdate(@RequestBody ContactModel contact) {
 
-		ContactModel contactSave = contatoRepository.save(contact);
-		return new ResponseEntity<ContactModel>(contactSave, HttpStatus.OK);
+		Long 		id 			= contact.getId();
+		String 		name		= contact.getName();
+		String 		cpf			= contact.getCpf();
+		Date 		date		= contact.getDate();
+		String 		zip_code	= contact.getZip_code();
+		String 		email		= contact.getEmail();
+		Long 		user_id		= contact.getUser_id();
+
+		contactRepository.contactUpdate(name, cpf, date, zip_code, email, id);
+		return new ResponseEntity<ContactModel>(HttpStatus.OK);
 	}
+
+
+
+
+
+
 
 
 	//Deletar Contato por Id
 	@DeleteMapping(value = "/delete/{contact_id}", produces = "application/text")
 	public String contactDelete (@PathVariable (value = "contact_id") Long contact_id){
 		
-		contatoRepository.deleteById(contact_id);
+		contactRepository.deleteById(contact_id);
 		
 		return "ok";
 	}
