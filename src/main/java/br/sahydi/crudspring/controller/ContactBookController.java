@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.sf.jasperreports.engine.JRException;
 import br.sahydi.crudspring.model.ContactModel;
+import br.sahydi.crudspring.model.PhoneModel;
 import br.sahydi.crudspring.repository.ContactRepository;
 import br.sahydi.crudspring.repository.PhoneRepository;
 import br.sahydi.crudspring.service.ReportService;
@@ -37,7 +38,7 @@ public class ContactBookController {
 	private ContactRepository contactRepository;
 
 	@Autowired 
-	private PhoneRepository telefoneRepository;
+	private PhoneRepository phoneRepository;
 	
 	@Autowired 
 	private ReportService reportService;
@@ -103,13 +104,18 @@ public class ContactBookController {
 		Date 		date		= contact.getDate();
 		String 		zip_code	= contact.getZip_code();
 		String 		email		= contact.getEmail();
-		Long 		user_id		= contact.getUser_id();
 
 		contactRepository.contactUpdate(name, cpf, date, zip_code, email, id);
 		return new ResponseEntity<ContactModel>(HttpStatus.OK);
 	}
 
+	//Atualizar Adicionar Telefone do Contato
+	@PostMapping(value = "/phoneUpdateAdd", produces = "application/json")
+	public ResponseEntity<PhoneModel> phoneUpdateAdd(@RequestBody PhoneModel phone) {
 
+		phoneRepository.save(phone);
+		return new ResponseEntity<PhoneModel>(HttpStatus.OK);
+	}
 
 
 
@@ -129,7 +135,7 @@ public class ContactBookController {
 	@DeleteMapping(value = "/delete-phone/{phone_id}", produces = "application/text")
 	public String phoneDelete (@PathVariable("phone_id") Long phone_id){
 		
-		telefoneRepository.deleteById(phone_id);
+		phoneRepository.deleteById(phone_id);
 		
 		return "ok";
 	}
