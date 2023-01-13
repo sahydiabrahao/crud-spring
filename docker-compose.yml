@@ -5,9 +5,9 @@ services:
   dpg-cf0qdb9a6gdm8jptdejg-a.oregon-postgres.render.com:
     image: postgres:latest
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DATABASE: db_contact_book
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: wQddOtOpSUW7UTJNhMRIB3zopaM0fdfW
+      POSTGRES_DATABASE: db_contact_book_1u31
 
   crud-spring:
     image: crud-spring
