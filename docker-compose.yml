@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
 
-  dpg-cf03u682i3mmhme099mg-a.oregon-postgres.render.com:
+  dpg-cf0qdb9a6gdm8jptdejg-a.oregon-postgres.render.com:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
@@ -18,4 +18,4 @@ services:
       context: ./
       dockerfile: Dockerfile
     depends_on:
-      - dpg-cf03u682i3mmhme099mg-a.oregon-postgres.render.com
+      - dpg-cf0qdb9a6gdm8jptdejg-a.oregon-postgres.render.com
