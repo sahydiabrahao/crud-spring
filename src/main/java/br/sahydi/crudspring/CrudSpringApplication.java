@@ -33,12 +33,12 @@ public class CrudSpringApplication {
 	public void addCorsMappings(CorsRegistry registry) {
 		
 		registry.addMapping("/login/**")
-			.allowedMethods("*")
-			.allowedOrigins("*");
+			.allowedOrigins("*")
+			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 			
 		registry.addMapping("/contact-book/**")
-			.allowedMethods("*")
-			.allowedOrigins("*");
+			.allowedOrigins("*")
+			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 	}
 
 }
