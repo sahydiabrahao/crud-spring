@@ -32,10 +32,19 @@ public class CrudSpringApplication {
 	// Libera acesso às origens URL/URI específicas (mapeamento global)
 	public void addCorsMappings(CorsRegistry registry) {
 		
+		registry.addMapping("/login")
+			.allowedOrigins("*")
+			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+
 		registry.addMapping("/login/**")
 			.allowedOrigins("*")
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
-			
+		
+		registry.addMapping("/contact-book")
+			.allowedOrigins("*")
+			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");	
+
+
 		registry.addMapping("/contact-book/**")
 			.allowedOrigins("*")
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
