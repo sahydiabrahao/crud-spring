@@ -33,20 +33,20 @@ public class CrudSpringApplication {
 	public void addCorsMappings(CorsRegistry registry) {
 		
 		registry.addMapping("/login")
-			.allowedOrigins("*")
+			.allowedOrigins("https://crud-angular.onrender.com")
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 
 		registry.addMapping("/login/**")
-			.allowedOrigins("*")
+			.allowedOrigins("https://crud-angular.onrender.com")
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 		
 		registry.addMapping("/contact-book")
-			.allowedOrigins("*")
+			.allowedOrigins("https://crud-angular.onrender.com")
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");	
 
 
 		registry.addMapping("/contact-book/**")
-			.allowedOrigins("*")
+			.allowedOrigins("https://crud-angular.onrender.com")
 			.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
 	}
 
