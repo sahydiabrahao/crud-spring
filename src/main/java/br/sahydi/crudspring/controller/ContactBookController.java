@@ -2,6 +2,7 @@ package br.sahydi.crudspring.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.SignatureSpi.ecCVCDSA224;
+import org.hibernate.mapping.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -111,11 +114,13 @@ public class ContactBookController {
 
 	//Atualizar Telefone do Contato
 	@PutMapping(value = "/phoneUpdate", produces = "application/json")
-	public ResponseEntity<PhoneModel> phoneUpdate(
-		@RequestBody Long contact_id,
-		@RequestBody Long phone_id) {
+	public ResponseEntity<PhoneModel> phoneUpdate(@RequestBody ArrayList<Any> array_data) {
+		
+		Long 	contact_id 		= Long.parseLong((array_data.get(0).toString()));
+		Long 	phone_id 		= Long.parseLong((array_data.get(1).toString()));
+		String 	phone_number 	= (array_data.get(2).toString());
 
-		phoneRepository.phoneUpdate(phone_id, contact_id);
+		phoneRepository.phoneUpdate(phone_number, phone_id, contact_id);
 		return new ResponseEntity<PhoneModel>(HttpStatus.OK);
 	}
 

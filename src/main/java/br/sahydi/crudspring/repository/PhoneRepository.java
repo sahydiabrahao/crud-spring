@@ -15,7 +15,7 @@ public interface PhoneRepository extends JpaRepository<PhoneModel, Long> {
     //Atualizar Telefone do Contato do Usuário
     @Transactional
     @Modifying
-    @Query(value = "UPDATE phone SET number=?1 WHERE id=?2", nativeQuery = true)
-    void phoneUpdate(Long phone_id, Long contact_id);
+    @Query(value = "UPDATE phone SET number=?1 WHERE id=?2 AND contact_id=?3", nativeQuery = true)
+    void phoneUpdate(String phone_number, Long phone_id, Long contact_id);
 
 }
