@@ -109,17 +109,15 @@ public class ContactBookController {
 		return new ResponseEntity<ContactModel>(HttpStatus.OK);
 	}
 
-	//Atualizar Adicionar Telefone do Contato
-	@PostMapping(value = "/phoneUpdateAdd", produces = "application/json")
-	public ResponseEntity<PhoneModel> phoneUpdateAdd(@RequestBody PhoneModel phone) {
+	//Atualizar Telefone do Contato
+	@PutMapping(value = "/phoneUpdate", produces = "application/json")
+	public ResponseEntity<PhoneModel> phoneUpdate(
+		@RequestBody Long contact_id,
+		@RequestBody Long phone_id) {
 
-		phoneRepository.save(phone);
+		phoneRepository.phoneUpdate(phone_id, contact_id);
 		return new ResponseEntity<PhoneModel>(HttpStatus.OK);
 	}
-
-
-
-
 
 
 	//Deletar Contato por Id

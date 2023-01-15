@@ -12,10 +12,10 @@ import br.sahydi.crudspring.model.PhoneModel;
 @Repository
 public interface PhoneRepository extends JpaRepository<PhoneModel, Long> {
 
-
-    //Salvar Telefone do Contato do Usuário
+    //Atualizar Telefone do Contato do Usuário
     @Transactional
     @Modifying
-    @Query(value = "INSERT INTO phone('number', contact_id) VALUES (?1, ?2)", nativeQuery = true)
-    void phoneUpdateAdd(String number, Long contact_id);
+    @Query(value = "UPDATE phone SET number=?1 WHERE id=?2", nativeQuery = true)
+    void phoneUpdate(Long phone_id, Long contact_id);
+
 }
