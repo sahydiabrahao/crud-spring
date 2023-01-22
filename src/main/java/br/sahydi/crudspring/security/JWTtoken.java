@@ -89,19 +89,23 @@ public class JWTtoken {
 	private void liberarCORS(HttpServletResponse response) {
 		
 		if (response.getHeader("Access-Control-Allow-Origin") == null) {
-			response.addHeader("Access-Control-Allow-Origin", "*");		
+			response.addHeader("Access-Control-Allow-Origin", "*");
+			response.setStatus(200);		
 		}
 		
 		if (response.getHeader("Access-Control-Allow-Headers") == null) {
-			response.addHeader("Access-Control-Allow-Headers", "*");		
+			response.addHeader("Access-Control-Allow-Headers", "*");	
+			response.setStatus(200);		
 		}
 		
 		if (response.getHeader("Access-Control-Request-Headers") == null) {
-			response.addHeader("Access-Control-Request-Headers", "*");		
+			response.addHeader("Access-Control-Request-Headers", "*");
+			response.setStatus(200);			
 		}
 		
 		if (response.getHeader("Access-Control-Allow-Methods") == null) {
-			response.addHeader("Access-Control-Allow-Methods", "*");		
+			response.addHeader("Access-Control-Allow-Methods", "*");
+			response.setStatus(200);			
 		}
 	}
 
